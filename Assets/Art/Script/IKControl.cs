@@ -18,11 +18,7 @@ namespace Art.Script
         public Transform PaddleRightHandObj;
         public Transform PaddleLeftHandObj;
         public GameObject PaddleGrabIK;
-        public Transform HarpoonRightHandObj;
-        public GameObject HarpoonGrabIK;
-        public Transform NetRightHandObj;
-        public Transform NetLeftHandObj;
-        public GameObject NetGrabIK;
+      
         public Transform LookObj;
         public IKType Type;
         public IKType CurrentType;
@@ -57,8 +53,6 @@ namespace Art.Script
             {
                 case IKType.Paddle:
                     PaddleGrabIK.SetActive(true);
-                    HarpoonGrabIK.SetActive(false);
-                    NetGrabIK.SetActive(false);
 
                     _animator.SetIKRotation(AvatarIKGoal.RightHand, PaddleRightHandObj.rotation);
                     _animator.SetIKPosition(AvatarIKGoal.RightHand, PaddleRightHandObj.position);
@@ -69,32 +63,6 @@ namespace Art.Script
                     _animator.SetIKPosition(AvatarIKGoal.LeftHand, PaddleLeftHandObj.position);
                     _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
                     _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    break;
-                case IKType.Harpoon:
-                    HarpoonGrabIK.SetActive(true);
-                    PaddleGrabIK.SetActive(false);
-                    NetGrabIK.SetActive(false);
-
-                    _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                    _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    _animator.SetIKPosition(AvatarIKGoal.RightHand, HarpoonRightHandObj.position);
-                    _animator.SetIKRotation(AvatarIKGoal.RightHand, HarpoonRightHandObj.rotation);
-
-                    break;
-                case IKType.Net:
-                    PaddleGrabIK.SetActive(false);
-                    HarpoonGrabIK.SetActive(false);
-                    NetGrabIK.SetActive(true);
-
-                    _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                    _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    _animator.SetIKRotation(AvatarIKGoal.LeftHand, NetLeftHandObj.rotation);
-                    _animator.SetIKPosition(AvatarIKGoal.LeftHand, NetLeftHandObj.position);
-
-                    _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                    _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    _animator.SetIKRotation(AvatarIKGoal.RightHand, NetRightHandObj.rotation);
-                    _animator.SetIKPosition(AvatarIKGoal.RightHand, NetRightHandObj.position);
                     break;
             }
         }

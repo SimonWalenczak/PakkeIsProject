@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Character;
 using Character.State;
 using Kayak.Data;
-using Sound;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-using WaterAndFloating;
-using Random = System.Random;
 
 namespace Kayak
 {
@@ -55,10 +49,7 @@ namespace Kayak
 
         private void OnCollisionEnter(Collision collision)
         {
-            CharacterManager characterManager = CharacterManager.Instance;
-            float value = collision.relativeVelocity.magnitude / Data.KayakValues.CollisionToBalanceMagnitudeDivider;
             //Debug.Log($"collision V.M. :{Math.Round(collision.relativeVelocity.magnitude)} -> {Math.Round(value,2)}");
-            characterManager.AddBalanceValueToCurrentSide(value);
             OnKayakCollision.Invoke();
         }
 
@@ -71,14 +62,13 @@ namespace Kayak
             KayakParameters kayakValues = Data.KayakValues;
 
             float velocityX = velocity.x;
-            float maxClamp = CharacterManager.Instance.SprintInProgress ? 
-                kayakValues.MaximumFrontSprintVelocity :
-                kayakValues.MaximumFrontVelocity * CharacterManager.Instance.PlayerStats.MaximumSpeedMultiplier;
+            
+            float maxClamp = kayakValues.MaximumFrontVelocity;
             velocityX = Mathf.Clamp(velocityX, -maxClamp, maxClamp);
-
+            
             float velocityZ = velocity.z;
             velocityZ = Mathf.Clamp(velocityZ, -maxClamp, maxClamp);
-
+            
             Rigidbody.velocity = new Vector3(velocityX, velocity.y, velocityZ);
         }
 

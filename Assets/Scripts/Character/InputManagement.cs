@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 namespace Character
 {
@@ -35,23 +33,8 @@ namespace Character
 
             inputsEnum.RotateLeft = _gameplayInputs.Boat.StaticRotateLeft.ReadValue<float>();
             inputsEnum.RotateRight = _gameplayInputs.Boat.StaticRotateRight.ReadValue<float>();
-
-            inputsEnum.ResetCamera = _gameplayInputs.Boat.ResetCamera.ReadValue<float>() > 0;
             
-            inputsEnum.RotateCamera = _gameplayInputs.Boat.RotateCamera.ReadValue<Vector2>();
-
-            inputsEnum.OpenWeaponMenu = _gameplayInputs.Boat.OpenWheelMenu.ReadValue<float>() > 0.5f;
-            inputsEnum.SelectWeaponMenu = new Vector2(_gameplayInputs.Boat.SelectOnWheelX.ReadValue<float>(),_gameplayInputs.Boat.SelectOnWheelY.ReadValue<float>());
-            inputsEnum.DeselectWeapon = _gameplayInputs.Boat.DeselectWeapon.triggered;
-
-            inputsEnum.Aim = _gameplayInputs.Boat.Aim.ReadValue<float>() > DeadzoneJoystickTrigger;
-            inputsEnum.Shoot = _gameplayInputs.Boat.Shoot.ReadValue<float>() > DeadzoneJoystickTrigger;
-            inputsEnum.MovingAim = _gameplayInputs.Boat.MoveAim.ReadValue<Vector2>();
-
             inputsEnum.Deadzone = DeadzoneJoystick;
-
-            inputsEnum.AnyButton = _gameplayInputs.Boat.AnyButton.ReadValue<float>() > 0.3f;
-            inputsEnum.Start = _gameplayInputs.Boat.ShowLeaveMenu.ReadValue<float>() > 0.3f;
 
             Inputs = inputsEnum;
         }
@@ -66,22 +49,6 @@ namespace Character
         public float RotateLeft;
         public float RotateRight;
         
-        public bool ResetCamera;
-        public Vector2 RotateCamera;
-        
         public float Deadzone;
-        
-        public bool OpenWeaponMenu;
-        public Vector2 SelectWeaponMenu;
-        public bool DeselectWeapon;
-        
-        public bool Aim;
-        public bool Shoot;
-        public Vector2 MovingAim;
-
-        public bool Unbalanced;
-
-        public bool AnyButton;
-        public bool Start;
     }
 }

@@ -1,6 +1,4 @@
 using Art.Script;
-using Character.Camera;
-using Character.Camera.State;
 using DG.Tweening;
 using Kayak.Data;
 using UnityEngine;
@@ -10,8 +8,9 @@ namespace Character.State
 {
     public abstract class CharacterStateBase 
     {
+        public CharacterMultiplayerManager CharacterMultiplayerManager;
+        
         protected CharacterManager CharacterManagerRef;
-        public CameraManager CameraManagerRef;
         public MonoBehaviour MonoBehaviourRef;
         
         public bool CanBeMoved = true;
@@ -35,9 +34,11 @@ namespace Character.State
         //anim
         public float TimeBeforeSettingPaddleAnimator;
         
-        protected CharacterStateBase()
+        protected CharacterStateBase(CharacterMultiplayerManager character)
         {
-            if (CharacterManager.Instance != null)
+            CharacterMultiplayerManager = character;
+            
+            if (CharacterMultiplayerManager != null)
             {
                 Initialize();
             }
@@ -45,9 +46,8 @@ namespace Character.State
 
         public void Initialize()
         {
-            CharacterManagerRef = CharacterManager.Instance;
-            CameraManagerRef = CharacterManager.Instance.CameraManagerProperty;
-            MonoBehaviourRef = CharacterManager.Instance.CharacterMonoBehaviour;
+            CharacterManagerRef = CharacterMultiplayerManager.CharacterManager;
+            MonoBehaviourRef =CharacterMultiplayerManager.CharacterManager.CharacterMonoBehaviour;
 
             Floaters = CharacterManagerRef.KayakControllerProperty.FloatersRef;
         }
@@ -61,18 +61,7 @@ namespace Character.State
         public abstract void SwitchState(CharacterManager character);
         
         public abstract void ExitState(CharacterManager character);
-
-        /// <summary>
-        /// Rotate the boat alongside the Balance value
-        /// </summary>
-        protected void MakeBoatRotationWithBalance(Transform kayakTransform, float multiplier)
-        {
-            Quaternion localRotation = kayakTransform.localRotation;
-            Vector3 boatRotation = localRotation.eulerAngles;
-            Quaternion targetBoatRotation = Quaternion.Euler(boatRotation.x,boatRotation.y, CharacterManagerRef.Balance * 3 * multiplier);
-            localRotation = Quaternion.Lerp(localRotation, targetBoatRotation, Time.deltaTime * 2);
-            kayakTransform.localRotation = localRotation;
-        }
+        
 
         /// <summary>
         /// Move the velocity toward the player's facing direction
@@ -87,43 +76,13 @@ namespace Character.State
 
             CharacterManagerRef.KayakControllerProperty.Rigidbody.velocity = new Vector3(newVelocity.x, oldVelocity.y, newVelocity.y);
         }
-
-        protected void CheckBalance()
-        {
-            //check balanced -> unbalanced
-            if (Mathf.Abs(CharacterManagerRef.Balance) >= CharacterManagerRef.Data.BalanceLimit * CharacterManagerRef.PlayerStats.UnbalancedThresholdMultiplier &&
-                CharacterManagerRef.InvincibilityTime <= 0)
-            {
-                CameraManagerRef.CanMoveCameraManually = false;
-                CharacterManagerRef.KayakControllerProperty.CanReduceDrag = false;
-                
-                //switch states
-                CharacterUnbalancedState characterUnbalancedState = new CharacterUnbalancedState();
-                CharacterManagerRef.SwitchState(characterUnbalancedState);
-
-                CameraUnbalancedState cameraUnbalancedState = new CameraUnbalancedState();
-                CameraManagerRef.SwitchState(cameraUnbalancedState);
-            }
-        }
         
         public void LaunchNavigationState()
         {
-            CharacterManager character = CharacterManager.Instance;
-            character.WeaponChargedParticleSystem.Stop();
+            CharacterManager character = CharacterMultiplayerManager.CharacterManager;
 
-            CameraNavigationState cameraNavigationState = new CameraNavigationState();
-            character.CameraManagerProperty.SwitchState(cameraNavigationState);
-                
-            CharacterNavigationState characterNavigationState = new CharacterNavigationState();
+            CharacterNavigationState characterNavigationState = new CharacterNavigationState(CharacterMultiplayerManager);
             character.SwitchState(characterNavigationState);
-
-            character.WeaponUIManagerProperty.SetCombatWeaponUI(false);
-            character.WeaponUIManagerProperty.SetCooldownUI(0);
-            
-            character.WeaponUIManagerProperty.AutoAimController.ShowAutoAimCircle(false);
-            character.WeaponUIManagerProperty.AutoAimController.ShowAutoAimUI(false);
-            
-            character.WeaponUIManagerProperty.SetLastSelectedPaddle();
             
             CharacterManagerRef.IKPlayerControl.CurrentType = IKType.Paddle;
         }
@@ -148,9 +107,6 @@ namespace Character.State
             float multiplier = CharacterManagerRef.Data.FloatersLevelDifferenceToBalanceMultiplier;
             float frontBackDifference = Mathf.Abs(frontLevel - backLevel) * multiplier;
             float leftRightDifference = Mathf.Abs(leftLevel - rightLevel) * multiplier;
-
-            CharacterManagerRef.AddBalanceValueToCurrentSide(frontBackDifference);
-            CharacterManagerRef.Balance += leftRightDifference;
         }
 
         #endregion

@@ -5,6 +5,8 @@ using Character;
 
 public class SpeedParticle : MonoBehaviour
 {
+    [SerializeField] private CharacterMultiplayerManager _characterMultiplayerManager;
+
     [SerializeField] Rigidbody _rigidbody;
     [SerializeField] ParticleSystem _particleSystem1;
     [SerializeField] ParticleSystem _particleSystem2;
@@ -15,10 +17,9 @@ public class SpeedParticle : MonoBehaviour
 
     private void Start()
     {
-        _maxSpeed = CharacterManager.Instance.KayakControllerProperty.Data.KayakValues.MaximumFrontVelocity;
+        _maxSpeed = _characterMultiplayerManager.CharacterManager.KayakControllerProperty.Data.KayakValues.MaximumFrontVelocity;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

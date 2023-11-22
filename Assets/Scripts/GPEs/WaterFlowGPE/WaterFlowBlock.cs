@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Character;
-using Character.Camera;
 using Kayak;
 using UnityEngine;
 using WaterFlowGPE;
@@ -10,6 +9,8 @@ namespace GPEs.WaterFlowGPE
 {
     public class WaterFlowBlock : MonoBehaviour
     {
+        [SerializeField] private CharacterMultiplayerManager _characterMultiplayerManager;
+        
         //TODO to scriptable object
         [Header("Parameters"), SerializeField]
         private float _speed;
@@ -65,12 +66,10 @@ namespace GPEs.WaterFlowGPE
         private void OnTriggerStay(Collider other)
         {
             CheckForKayak(other);
-            CheckForCameraShake(other);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            ResetCameraShake(other);
         }
 
         /// <summary>
@@ -80,58 +79,55 @@ namespace GPEs.WaterFlowGPE
         /// </summary>
         /// <param name="collider"> The collider to check </param>
         private void CheckForKayak(Collider collider)
-        {
-            KayakController kayakController = CharacterManager.Instance.KayakControllerProperty;
-
+        { 
+            Debug.Log("instance ici à mettre");
+            KayakController kayakController = _characterMultiplayerManager.CharacterManager.KayakControllerProperty;
+        
             if (kayakController.gameObject != collider.gameObject || WaterFlowManager == null ||
-                CharacterManager.Instance.CurrentStateBaseProperty.CanBeMoved == false)
+                _characterMultiplayerManager.CharacterManager.CurrentStateBaseProperty.CanBeMoved == false)
             {
                 return;
             }
-
+        
             WaterFlowManager.SetClosestBlockToPlayer(kayakController.transform);
             if (IsActive == false)
             {
                 return;
             }
-
-
+        
+        
             //In water flow
-            CharacterManager.Instance.InWaterFlow = true;
-
+            _characterMultiplayerManager.CharacterManager.InWaterFlow = true;
+        
             //get rotation
             Quaternion currentRotation = kayakController.transform.rotation;
             Vector3 currentRotationEuler = currentRotation.eulerAngles;
             //get target rotation
             float targetYAngle = Quaternion.LookRotation(Direction).eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(currentRotationEuler.x, targetYAngle, currentRotationEuler.z);
-
+        
             //check if the boat is facing the flow direction or not
             const float ANGLE_TO_FACE_FLOW = 20f;
             float angleDifference = Mathf.Abs(Mathf.Abs(currentRotationEuler.y) - Mathf.Abs(targetYAngle));
             bool isFacingFlow = angleDifference <= ANGLE_TO_FACE_FLOW;
-
+        
             //apply rotation
-            InputManagement inputManagement = CharacterManager.Instance.InputManagementProperty;
+            InputManagement inputManagement = _characterMultiplayerManager.CharacterManager.InputManagementProperty;
             bool isMoving = inputManagement.Inputs.PaddleLeft || inputManagement.Inputs.PaddleRight ||
                             Mathf.Abs(inputManagement.Inputs.RotateLeft) > 0.1f ||
                             Mathf.Abs(inputManagement.Inputs.RotateRight) > 0.1f;
             kayakController.transform.rotation = Quaternion.Lerp(currentRotation, targetRotation,
                 isMoving ? _rotationLerpWhenMoving :
                 isFacingFlow ? _rotationLerpWhenInDirection : _rotationLerpWhenNotInDirection);
-
+        
             //apply velocity by multiplying current by speed
             Vector3 velocity = kayakController.Rigidbody.velocity;
             float speed = _speed * (isFacingFlow ? _speed : _speed * _speedNotFacingMultiplier);
-
+        
             kayakController.Rigidbody.velocity = new Vector3(
                 velocity.x + speed * Mathf.Sign(velocity.x),
                 velocity.y,
                 velocity.z + speed * Mathf.Sign(velocity.z));
-                    
-            //balance
-            double value = _balanceValue * UnityEngine.Random.Range(_balanceValueRandomMultiplierRange.x, _balanceValueRandomMultiplierRange.y);
-            CharacterManager.Instance.AddBalanceValueToCurrentSide(value);
         }
 
         /// <summary>
@@ -159,31 +155,6 @@ namespace GPEs.WaterFlowGPE
                 _playParticleTime = UnityEngine.Random.Range(_randomPlayOfParticleTime.x, _randomPlayOfParticleTime.y);
             }
         }
-
-        #region Camera
-        private void CheckForCameraShake(Collider collider)
-        {
-            CameraManager _tempoCameraManager = collider.GetComponentInParent<CameraManager>();
-            if (_tempoCameraManager != null && WaterFlowManager != null)
-            {
-                _tempoCameraManager.WaterFlow = true;
-            }
-        }
-        private void ResetCameraShake(Collider other)
-        {
-            if (CharacterManager.Instance.InWaterFlow == true)
-            {
-                CharacterManager.Instance.InWaterFlow = false;
-            }
-
-            CameraManager _tempoCameraManager = other.GetComponentInParent<CameraManager>();
-            if (_tempoCameraManager != null)
-            {
-                _tempoCameraManager.WaterFlow = false;
-            }
-
-        }
-        #endregion
 
 #if UNITY_EDITOR
 
