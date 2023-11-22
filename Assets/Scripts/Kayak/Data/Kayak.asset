@@ -20,7 +20,7 @@ MonoBehaviour:
     TimerMinForSprint: 0.7
     TimerMaxForSprint: 1.8
     CollisionToBalanceMagnitudeDivider: 1.4
-    PaddleSideRotationForce: 0.254
+    PaddleSideRotationForce: 0.3
     PaddleCooldown: 1
     PaddleRotationDeceleration: 0.008
     PaddleForce: 52.6
@@ -52,7 +52,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     StaticRotationForce: 0.0131
-    StaticRotationDeceleration: 0.013
+    StaticRotationDeceleration: 0.01
     StaticRotationCooldownAfterPaddle: 0.5
     VelocityDecelerationLerp: 0.004
     VelocityDecelerationRotationForce: 0.01
