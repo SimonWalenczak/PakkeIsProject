@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3768388696342757186}
   - component: {fileID: 1134849390430031925}
+  - component: {fileID: 1353108041290118479}
   m_Layer: 0
   m_Name: PlayerConfiguration
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1134849390430031925
 MonoBehaviour:
@@ -60,6 +61,21 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Boat
+  m_DefaultActionMap: be6c4bf5-cce8-4353-ac99-d5a013e6256a
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1353108041290118479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294223290852160716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f239cb2fb238cf4fa7cee549ec1e221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSetupMenuPrefab: {fileID: 6852791568809698666, guid: 8b3f94d074244a8448dfd3cd2c073a39,
+    type: 3}
+  input: {fileID: 1134849390430031925}

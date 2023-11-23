@@ -1,10 +1,14 @@
+using System;
 using UnityEngine;
 
 public class TopDownCamera : MonoBehaviour
 {
     public Transform target;
     public float smoothSpeed = 0.125f;
-    public Vector3 offset; 
+    public Vector3 offset;
+
+    [Header("Rotation Camera")]
+    public Vector3 RotationCam;
 
     void LateUpdate()
     {
@@ -18,6 +22,6 @@ public class TopDownCamera : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
         
-        transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        transform.rotation = Quaternion.Euler(RotationCam);
     }
 }

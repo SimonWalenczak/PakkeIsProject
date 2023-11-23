@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Character
 {
@@ -7,6 +8,8 @@ namespace Character
     {
         private GameplayInputs _gameplayInputs;
 
+        private PlayerConfiguration _playerConfig;
+        
         public GameplayInputs GameplayInputs { get { return _gameplayInputs; } private set { _gameplayInputs = value; } }
         [SerializeField] float DeadzoneJoystick = 0.3f;
         [SerializeField] float DeadzoneJoystickTrigger = 0.3f;
@@ -16,24 +19,34 @@ namespace Character
         {
             _gameplayInputs = new GameplayInputs();
             _gameplayInputs.Enable();
+            
         }
 
-        private void Update()
+        public void InitializePlayer(PlayerConfiguration pc)
         {
-            GatherInputs();
+            _playerConfig = pc;
+
+            _playerConfig.Input.onActionTriggered += GatherInputs;
         }
-
-
-        private void GatherInputs()
+        
+        private void GatherInputs(InputAction.CallbackContext context)
         {
             InputsEnum inputsEnum = Inputs;
             
-            inputsEnum.PaddleLeft = _gameplayInputs.Boat.PaddleLeft.ReadValue<float>() > DeadzoneJoystickTrigger;
-            inputsEnum.PaddleRight = _gameplayInputs.Boat.PaddleRight.ReadValue<float>() > DeadzoneJoystickTrigger;
-
-            inputsEnum.RotateLeft = _gameplayInputs.Boat.StaticRotateLeft.ReadValue<float>();
-            inputsEnum.RotateRight = _gameplayInputs.Boat.StaticRotateRight.ReadValue<float>();
+            //Paddle
+            if (context.action.name == _gameplayInputs.Boat.PaddleLeft.name)
+                inputsEnum.PaddleLeft = context.ReadValue<float>() > DeadzoneJoystickTrigger;
+                
+            if (context.action.name == _gameplayInputs.Boat.PaddleRight.name)
+                inputsEnum.PaddleRight = context.ReadValue<float>() > DeadzoneJoystickTrigger;
             
+            //Rotate
+            if (context.action.name == _gameplayInputs.Boat.StaticRotateLeft.name)
+                inputsEnum.RotateLeft = context.ReadValue<float>();
+            
+            if (context.action.name == _gameplayInputs.Boat.StaticRotateRight.name)
+                inputsEnum.RotateRight = context.ReadValue<float>();
+
             inputsEnum.Deadzone = DeadzoneJoystick;
 
             Inputs = inputsEnum;
