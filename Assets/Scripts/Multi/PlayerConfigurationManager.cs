@@ -15,6 +15,8 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public static PlayerConfigurationManager Instance { get; private set; }
 
+    [SerializeField] private GameObject TransitionObject;
+    
     private void Awake()
     {
         if (Instance != null)
@@ -54,7 +56,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if (playerConfigs.Count == MaxPlayer && playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene("Racing_Map1");
+            StartCoroutine(Transition());
         }
     }
 
@@ -74,6 +76,13 @@ public class PlayerConfigurationManager : MonoBehaviour
         {
             Debug.Log("Max Player");
         }
+    }
+    
+    IEnumerator Transition()
+    {
+        TransitionObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("SelectLevel");
     }
 }
 

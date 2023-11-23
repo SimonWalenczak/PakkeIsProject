@@ -8,18 +8,20 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject TransitionObject;
+
     public void ValidPreset(int index)
     {
         GameData.NumberOfPlayer = index;
         Debug.Log("Number of players : " + index);
-        SceneManager.LoadScene("PlayerSetup");
+        StartCoroutine(Transition());
     }
 
     public void GoToCredits()
     {
         SceneManager.LoadScene("Credits");
     }
-    
+
     public void Quit()
     {
         //If we are running in a standalone build of the game
@@ -33,5 +35,12 @@ public class MainMenu : MonoBehaviour
         //Stop playing the scene
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    IEnumerator Transition()
+    {
+        TransitionObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("PlayerSetup");
     }
 }
