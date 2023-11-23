@@ -80,6 +80,15 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfb9414c-c276-4c79-83b2-8ec296af8ff3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
                     ""action"": ""ClosePauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da726fee-f16f-4623-b6cf-eca200a6ccbc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +259,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
         m_Boat_StaticRotateRight = m_Boat.FindAction("StaticRotateRight", throwIfNotFound: true);
         m_Boat_ShowPauseMenus = m_Boat.FindAction("ShowPauseMenus", throwIfNotFound: true);
         m_Boat_ClosePauseMenu = m_Boat.FindAction("ClosePauseMenu", throwIfNotFound: true);
+        m_Boat_Select = m_Boat.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -306,6 +327,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Boat_StaticRotateRight;
     private readonly InputAction m_Boat_ShowPauseMenus;
     private readonly InputAction m_Boat_ClosePauseMenu;
+    private readonly InputAction m_Boat_Select;
     public struct BoatActions
     {
         private @GameplayInputs m_Wrapper;
@@ -316,6 +338,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
         public InputAction @StaticRotateRight => m_Wrapper.m_Boat_StaticRotateRight;
         public InputAction @ShowPauseMenus => m_Wrapper.m_Boat_ShowPauseMenus;
         public InputAction @ClosePauseMenu => m_Wrapper.m_Boat_ClosePauseMenu;
+        public InputAction @Select => m_Wrapper.m_Boat_Select;
         public InputActionMap Get() { return m_Wrapper.m_Boat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -343,6 +366,9 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
             @ClosePauseMenu.started += instance.OnClosePauseMenu;
             @ClosePauseMenu.performed += instance.OnClosePauseMenu;
             @ClosePauseMenu.canceled += instance.OnClosePauseMenu;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
         }
 
         private void UnregisterCallbacks(IBoatActions instance)
@@ -365,6 +391,9 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
             @ClosePauseMenu.started -= instance.OnClosePauseMenu;
             @ClosePauseMenu.performed -= instance.OnClosePauseMenu;
             @ClosePauseMenu.canceled -= instance.OnClosePauseMenu;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
         }
 
         public void RemoveCallbacks(IBoatActions instance)
@@ -408,5 +437,6 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
         void OnStaticRotateRight(InputAction.CallbackContext context);
         void OnShowPauseMenus(InputAction.CallbackContext context);
         void OnClosePauseMenu(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
