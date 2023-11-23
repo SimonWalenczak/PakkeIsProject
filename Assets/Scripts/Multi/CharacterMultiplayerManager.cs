@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CharacterMultiplayerManager : MonoBehaviour
 {
-    // public KayakController KayakController;
     public CharacterManager CharacterManager;
     public InputManagement InputManagement;
 }

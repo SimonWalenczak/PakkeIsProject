@@ -27,6 +27,16 @@ public class PlayerConfigurationManager : MonoBehaviour
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfiguration>();
         }
+
+        MaxPlayer = GameData.NumberOfPlayer;
+    }
+
+    private void Update()
+    {
+        if (playerConfigs.Count >= MaxPlayer)
+        {
+            GetComponent<PlayerInputManager>().playerPrefab = null;
+        }
     }
 
     public List<PlayerConfiguration> GetPlayerConfigs()
@@ -44,19 +54,25 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if (playerConfigs.Count == MaxPlayer && playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Racing_Map1");
         }
     }
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        Debug.Log("Player Joined " + pi.playerIndex);
-
-
-        if (playerConfigs.All(p => p.PlayerIndex != pi.playerIndex))
+        if (playerConfigs.Count < MaxPlayer)
         {
-            pi.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfiguration(pi));
+            Debug.Log("Player Joined " + pi.playerIndex);
+
+            if (playerConfigs.All(p => p.PlayerIndex != pi.playerIndex))
+            {
+                pi.transform.SetParent(transform);
+                playerConfigs.Add(new PlayerConfiguration(pi));
+            }
+        }
+        else
+        {
+            Debug.Log("Max Player");
         }
     }
 }

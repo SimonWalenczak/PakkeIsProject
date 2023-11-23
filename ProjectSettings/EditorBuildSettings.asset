@@ -7,8 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/LD_Racing/MainMenu.unity
+    guid: ad97c7f381fa27a4db934b8a57cfb871
+  - enabled: 1
+    path: Assets/Scenes/LD_Racing/PlayerSetup.unity
     guid: a4020f8908ac7994ea36676d85116d24
   - enabled: 1
-    path: Assets/Scenes/LD_Racing/SimScene.unity
-    guid: d8643b9680df3a94784623f4bffbe2a1
+    path: Assets/Scenes/LD_Racing/Racing_Map1.unity
+    guid: db6eea6def83c674aa951860e7a4b9d4
+  - enabled: 1
+    path: Assets/Scenes/LD_Racing/Credits.unity
+    guid: 8d5cd052029a9374db2fa86c2905a96d
   m_configObjects: {}
