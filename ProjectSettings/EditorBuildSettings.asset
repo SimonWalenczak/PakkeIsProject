@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LD_Racing/MainMenu.unity
     guid: a4020f8908ac7994ea36676d85116d24
   - enabled: 1
-    path: Assets/Scenes/LD_Racing/Racing_Map1.unity
-    guid: db6eea6def83c674aa951860e7a4b9d4
+    path: Assets/Scenes/LD_Racing/SimScene.unity
+    guid: d8643b9680df3a94784623f4bffbe2a1
   m_configObjects: {}

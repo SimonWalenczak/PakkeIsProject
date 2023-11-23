@@ -8,6 +8,8 @@ namespace Character
     {
         private GameplayInputs _gameplayInputs;
 
+        private PlayerConfiguration _playerConfig;
+        
         public GameplayInputs GameplayInputs { get { return _gameplayInputs; } private set { _gameplayInputs = value; } }
         [SerializeField] float DeadzoneJoystick = 0.3f;
         [SerializeField] float DeadzoneJoystickTrigger = 0.3f;
@@ -19,11 +21,18 @@ namespace Character
             _gameplayInputs.Enable();
             
         }
+
+        public void InitializePlayer(PlayerConfiguration pc)
+        {
+            _playerConfig = pc;
+
+            _playerConfig.Input.onActionTriggered += GatherInputs;
+        }
         
         private void GatherInputs(InputAction.CallbackContext context)
         {
             InputsEnum inputsEnum = Inputs;
-
+            
             //Paddle
             if (context.action.name == _gameplayInputs.Boat.PaddleLeft.name)
                 inputsEnum.PaddleLeft = context.ReadValue<float>() > DeadzoneJoystickTrigger;
