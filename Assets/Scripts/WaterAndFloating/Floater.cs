@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace WaterAndFloating
 {
@@ -15,7 +16,12 @@ namespace WaterAndFloating
           [SerializeField] private float _waterAngularDrag = 0.5f;
           
           private Transform _playerTransform;
-          
+
+          private void Awake()
+          {
+               _waves = GameObject.Find("WavesPrefab").GetComponentInChildren<Waves>();
+          }
+
           private void FixedUpdate()
           {
                ManageFloater();
