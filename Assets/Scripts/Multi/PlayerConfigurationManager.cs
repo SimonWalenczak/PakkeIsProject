@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,10 +14,13 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     [SerializeField] private int MaxPlayer = 2;
 
+    [SerializeField] private TextMeshProUGUI TextExplain;
+    [SerializeField] private GameObject ExplainPanel;
+
     public static PlayerConfigurationManager Instance { get; private set; }
 
     [SerializeField] private GameObject TransitionObject;
-    
+
     private void Awake()
     {
         if (Instance != null)
@@ -37,7 +41,12 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         if (playerConfigs.Count >= MaxPlayer)
         {
+            ExplainPanel.SetActive(false);
             GetComponent<PlayerInputManager>().playerPrefab = null;
+        }
+        else
+        {
+            TextExplain.SetText((GameData.NumberOfPlayer - playerConfigs.Count).ToString() + " controllers left to connect.");
         }
     }
 
@@ -77,7 +86,7 @@ public class PlayerConfigurationManager : MonoBehaviour
             Debug.Log("Max Player");
         }
     }
-    
+
     IEnumerator Transition()
     {
         TransitionObject.SetActive(true);
