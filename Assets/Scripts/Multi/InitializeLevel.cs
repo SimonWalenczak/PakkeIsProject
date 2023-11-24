@@ -17,6 +17,10 @@ public class InitializeLevel : MonoBehaviour
             CharacterMultiplayerManager player = Instantiate(_playerPrefab, _playerSpawn[i].position, _playerSpawn[i].rotation,
                 gameObject.transform);
             player.GetComponentInChildren<InputManagement>().InitializePlayer(playerConfigs[i]);
+            
+            Transform placeForCharacterPlayer = player.GetComponentInChildren<CharacterPlayerPivot>().transform;
+
+            GameObject characterPlayer = Instantiate(playerConfigs[i].MeshPlayer, placeForCharacterPlayer.position, placeForCharacterPlayer.rotation, placeForCharacterPlayer.transform);
         }
     }
 }

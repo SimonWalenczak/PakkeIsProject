@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,18 +12,24 @@ public class SelectCharacter : MonoBehaviour
     public Sprite[] characterSprites;
 
     [SerializeField] private int selectedCharacterIndex = 0;
-
-    [Header("Selection")] 
-    [SerializeField] private bool IsSeelected;
     
-
+    [Header("Selection")] 
+    [SerializeField] private bool IsSelected;
+    
     [SerializeField] private Image _titlePlayer;
     [SerializeField] private List<Sprite> _titlePlayerSprites;
+    [SerializeField] private List<GameObject> _meshCharacterPlayers;
+    [SerializeField] private GameObject _actualMesh;
     [SerializeField] private GameObject _readyPanel;
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private Button _readyButton;
 
     private float ignoreInputTime = 0.5f;
+
+    private void Start()
+    {
+        _actualMesh = _meshCharacterPlayers[0];
+    }
 
     public void SetPlayerIndex(int pi)
     {
@@ -54,11 +61,12 @@ public class SelectCharacter : MonoBehaviour
     void UpdateCharacterSprite()
     {
         characterImage.sprite = characterSprites[selectedCharacterIndex];
+        _actualMesh = _meshCharacterPlayers[selectedCharacterIndex];
     }
 
-    public void SetColor(Material color)
+    public void SetMesh()
     {
-        //PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, color);
+        PlayerConfigurationManager.Instance.SetPlayerMesh(PlayerIndex, _actualMesh);
         print("selected");
         _readyPanel.SetActive(true);
         _readyButton.Select();

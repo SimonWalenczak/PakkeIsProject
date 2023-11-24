@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -61,9 +59,9 @@ public class PlayerConfigurationManager : MonoBehaviour
         return playerConfigs;
     }
 
-    public void SetPlayerColor(int index, Material color)
+    public void SetPlayerMesh(int index, GameObject mesh)
     {
-        playerConfigs[index].PlayerMaterial = color;
+        playerConfigs[index].MeshPlayer = mesh;
     }
 
     public void ReadyPlayer(int index)
@@ -112,5 +110,5 @@ public class PlayerConfiguration
     public PlayerInput Input { get; set; }
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
-    public Material PlayerMaterial { get; set; }
+    public GameObject MeshPlayer { get; set; }
 }
