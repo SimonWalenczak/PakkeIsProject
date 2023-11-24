@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Players: []
   rotationCam: {x: 70, y: 0, z: 0}
-  offset: {x: 0, y: 70, z: 0}
+  offset: {x: 0, y: 70, z: -30}
   zoomSpeed: 5
   maxFOV: 50
   minFOV: 30
