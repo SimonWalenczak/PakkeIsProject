@@ -51,7 +51,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    StaticRotationForce: 0.0131
+    StaticRotationForce: 0.0203
     StaticRotationDeceleration: 0.01
     StaticRotationCooldownAfterPaddle: 0.5
     VelocityDecelerationLerp: 0.004

@@ -1555,10 +1555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d049fbd85474946b88c6c14e6e114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Players: []
   rotationCam: {x: 90, y: 0, z: 0}
   offset: {x: 0, y: 70, z: 0}
   zoomSpeed: 5
-  maxFOV: 100
+  maxFOV: 50
   minFOV: 30
 --- !u!1 &484606095
 GameObject:
