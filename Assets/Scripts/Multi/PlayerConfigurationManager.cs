@@ -14,6 +14,7 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     [SerializeField] private int MaxPlayer = 2;
 
+    [SerializeField] private bool SelecteionFinish;
     [SerializeField] private TextMeshProUGUI TextExplain;
     [SerializeField] private GameObject ExplainPanel;
 
@@ -39,14 +40,19 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerConfigs.Count >= MaxPlayer)
+        if (SelecteionFinish == false)
         {
-            ExplainPanel.SetActive(false);
-            GetComponent<PlayerInputManager>().playerPrefab = null;
-        }
-        else
-        {
-            TextExplain.SetText((GameData.NumberOfPlayer - playerConfigs.Count).ToString() + " controllers left to connect.");
+            if (playerConfigs.Count >= MaxPlayer)
+            {
+                ExplainPanel.SetActive(false);
+                GetComponent<PlayerInputManager>().playerPrefab = null;
+                SelecteionFinish = true;
+            }
+            else
+            {
+                TextExplain.SetText((GameData.NumberOfPlayer - playerConfigs.Count).ToString() +
+                                    " controllers left to connect.");
+            }
         }
     }
 
