@@ -61,7 +61,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: be6c4bf5-cce8-4353-ac99-d5a013e6256a
+  m_DefaultActionMap: Boat
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1353108041290118479
