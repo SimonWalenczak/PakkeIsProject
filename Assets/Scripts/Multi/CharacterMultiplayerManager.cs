@@ -10,4 +10,5 @@ public class CharacterMultiplayerManager : MonoBehaviour
     public InputManagement InputManagement;
 
     public bool CanMove;
+    public bool IsInvincible;
 }
