@@ -8,7 +8,6 @@ public class CharacterMultiplayerManager : MonoBehaviour
 {
     public CharacterManager CharacterManager;
     public InputManagement InputManagement;
-
-    public bool CanMove;
+    
     public bool IsInvincible;
 }
