@@ -5186,6 +5186,7 @@ GameObject:
   - component: {fileID: 572368784906883106}
   - component: {fileID: 8237327326856358250}
   - component: {fileID: 4980574356805497315}
+  - component: {fileID: 5686339391866686918}
   m_Layer: 10
   m_Name: Kayak
   m_TagString: Test
@@ -5337,6 +5338,22 @@ MonoBehaviour:
   _particleSystem2: {fileID: 7389945577887310124}
   _emissionMin: 0
   _emissionMax: 15
+--- !u!114 &5686339391866686918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778740324263389983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db92ecde89ff904099be86e6d7d1279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOnDebrit: 0
+  IsInvincible: 0
+  actualVelocity: {x: 0, y: 0, z: 0}
+  Debrits: []
 --- !u!1 &1806307513495620206
 GameObject:
   m_ObjectHideFlags: 0

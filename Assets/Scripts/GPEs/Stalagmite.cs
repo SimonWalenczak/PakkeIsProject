@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Ralentisseur : MonoBehaviour
+public class Stalagmite : MonoBehaviour
 {
     public LayerMask TargetLayer;
 
@@ -17,10 +18,10 @@ public class Ralentisseur : MonoBehaviour
     {
         if (Contains(TargetLayer, other.gameObject.layer))
         {
-            if (other.GetComponentInParent<CharacterMultiplayerManager>().IsInvincible == false)
+            if (other.GetComponent<GPEActor>().IsInvincible == false)
             {
                 print("Banana");
-                other.GetComponentInParent<CharacterMultiplayerManager>().IsInvincible = true;
+                other.GetComponent<GPEActor>().IsInvincible = true;
                 StartCoroutine(Banana(other.gameObject));
             }
         }
@@ -53,6 +54,6 @@ public class Ralentisseur : MonoBehaviour
 
         //Time before next Banana
         yield return new WaitForSeconds(TimeBeforeBeingVulnerable);
-        other.GetComponentInParent<CharacterMultiplayerManager>().IsInvincible = false;
+        other.GetComponent<GPEActor>().IsInvincible = false;
     }
 }

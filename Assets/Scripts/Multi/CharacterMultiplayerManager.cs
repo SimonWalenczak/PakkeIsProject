@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Character;
@@ -8,6 +9,4 @@ public class CharacterMultiplayerManager : MonoBehaviour
 {
     public CharacterManager CharacterManager;
     public InputManagement InputManagement;
-    
-    public bool IsInvincible;
 }
