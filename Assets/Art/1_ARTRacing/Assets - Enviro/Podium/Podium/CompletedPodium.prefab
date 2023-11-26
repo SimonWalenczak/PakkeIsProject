@@ -38,7 +38,7 @@ Transform:
   - {fileID: 184652602618583908}
   - {fileID: 6442746144606389970}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &61072064720293653
 PrefabInstance:
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 5326080754903905981, guid: 5b1624bef86b7514a973e20abfe12c58,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8700004
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5326080754903905981, guid: 5b1624bef86b7514a973e20abfe12c58,
         type: 3}
@@ -295,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagtite_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145152174840064277, guid: 7ece2c6e0606d2544a3b29a1c4d657d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -468,6 +473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagtite_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712107537937473409, guid: ee36c6881bf153c41b279a17b4091d5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -741,6 +751,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagtite_02
       objectReference: {fileID: 0}
+    - target: {fileID: 7145152174840064277, guid: 7ece2c6e0606d2544a3b29a1c4d657d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -819,6 +834,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagtite_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134680613027160841, guid: ba8e9918deb57a24395b9a7c70dd7643,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
