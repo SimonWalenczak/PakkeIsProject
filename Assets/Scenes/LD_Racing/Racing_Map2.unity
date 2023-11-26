@@ -1672,8 +1672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 50764703}
   - component: {fileID: 50764704}
-  - component: {fileID: 50764705}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,23 +1715,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &50764705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50764702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &53751577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173947147728184942, guid: 64b5bd84af405344d86040858209014b,
@@ -4142,7 +4124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131630837}
-  - component: {fileID: 131630838}
   m_Layer: 0
   m_Name: Checkpoints
   m_TagString: Untagged
@@ -4179,34 +4160,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &131630838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131630836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f93d28f7d01ae4795b0c2242a04342, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Checkpoints:
-  - {fileID: 505357331}
-  - {fileID: 695369934}
-  - {fileID: 686320339}
-  - {fileID: 351701587}
-  - {fileID: 50764705}
-  - {fileID: 1648125173}
-  - {fileID: 497299681}
-  - {fileID: 508634827}
-  - {fileID: 945500166}
-  - {fileID: 1214705707}
-  - {fileID: 2066684738}
-  - {fileID: 948164096}
-  - {fileID: 883465382}
-  - {fileID: 1552809711}
-  NextcheckPoint: {fileID: 0}
 --- !u!1001 &132936897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10036,8 +9989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351701585}
   - component: {fileID: 351701586}
-  - component: {fileID: 351701587}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10080,23 +10032,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &351701587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351701584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &353041161 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173947147728184942, guid: 64b5bd84af405344d86040858209014b,
@@ -14404,8 +14339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 497299679}
   - component: {fileID: 497299680}
-  - component: {fileID: 497299681}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14448,23 +14382,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &497299681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497299678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &504310483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14558,8 +14475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505357329}
   - component: {fileID: 505357330}
-  - component: {fileID: 505357331}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14602,23 +14518,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &505357331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505357328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &505650806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14978,8 +14877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 508634825}
   - component: {fileID: 508634826}
-  - component: {fileID: 508634827}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15022,23 +14920,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &508634827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508634824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &514528798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19779,8 +19660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686320337}
   - component: {fileID: 686320338}
-  - component: {fileID: 686320339}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19823,23 +19703,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &686320339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686320336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &691920897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20203,8 +20066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695369932}
   - component: {fileID: 695369933}
-  - component: {fileID: 695369934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20247,23 +20109,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &695369934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695369931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &696015171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24574,8 +24419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883465380}
   - component: {fileID: 883465381}
-  - component: {fileID: 883465382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24618,23 +24462,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &883465382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883465379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &884360416
 GameObject:
   m_ObjectHideFlags: 0
@@ -26080,8 +25907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945500164}
   - component: {fileID: 945500165}
-  - component: {fileID: 945500166}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26124,23 +25950,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &945500166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945500163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &946240748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26238,8 +26047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 948164094}
   - component: {fileID: 948164095}
-  - component: {fileID: 948164096}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26282,23 +26090,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &948164096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948164093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &949794464
 GameObject:
   m_ObjectHideFlags: 0
@@ -32473,8 +32264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214705705}
   - component: {fileID: 1214705706}
-  - component: {fileID: 1214705707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32517,23 +32307,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &1214705707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214705704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1217279580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41361,8 +41134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552809709}
   - component: {fileID: 1552809710}
-  - component: {fileID: 1552809711}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41405,23 +41177,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &1552809711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552809708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1555663230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44689,8 +44444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1648125171}
   - component: {fileID: 1648125172}
-  - component: {fileID: 1648125173}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44733,23 +44487,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &1648125173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648125170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1652113783
 GameObject:
   m_ObjectHideFlags: 0
@@ -55885,8 +55622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2066684736}
   - component: {fileID: 2066684737}
-  - component: {fileID: 2066684738}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: checkpoint_1 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55929,23 +55665,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.591331, y: 4.155839, z: 1}
   m_Center: {x: 3.2154655, y: 1.57792, z: 0}
---- !u!114 &2066684738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066684735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a64102fe0d6ccaf43bc8712d6c62066e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanBePassed: 0
-  IsPassed: 0
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &2067662674
 PrefabInstance:
   m_ObjectHideFlags: 0

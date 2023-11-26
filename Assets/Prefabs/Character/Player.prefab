@@ -5187,6 +5187,7 @@ GameObject:
   - component: {fileID: 8237327326856358250}
   - component: {fileID: 4980574356805497315}
   - component: {fileID: 5686339391866686918}
+  - component: {fileID: 8425109483633019079}
   m_Layer: 10
   m_Name: Kayak
   m_TagString: Test
@@ -5354,6 +5355,24 @@ MonoBehaviour:
   IsInvincible: 0
   actualVelocity: {x: 0, y: 0, z: 0}
   Debrits: []
+--- !u!114 &8425109483633019079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778740324263389983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd2f3ac6b492224a933489d50ecf32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpointIndex: 0
+  checkpointLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  distanceToNextCheckpoint: 0
+  currentRank: 0
 --- !u!1 &1806307513495620206
 GameObject:
   m_ObjectHideFlags: 0

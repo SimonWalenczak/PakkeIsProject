@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/LD_Racing/PlayerSetup.unity
     guid: a4020f8908ac7994ea36676d85116d24
   - enabled: 1
+    path: Assets/Scenes/LD_Racing/SelectLevel.unity
+    guid: 90d5f37be0e3d40449ea61490a98eac2
+  - enabled: 1
     path: Assets/Scenes/LD_Racing/Racing_Map1.unity
     guid: db6eea6def83c674aa951860e7a4b9d4
   - enabled: 1
+    path: Assets/Scenes/LD_Racing/Racing_Map2.unity
+    guid: c3f2f7eebb57b8141833a2c7e17538a9
+  - enabled: 1
     path: Assets/Scenes/LD_Racing/Credits.unity
     guid: 8d5cd052029a9374db2fa86c2905a96d
-  - enabled: 1
-    path: Assets/Scenes/LD_Racing/SelectLevel.unity
-    guid: 90d5f37be0e3d40449ea61490a98eac2
   m_configObjects: {}
