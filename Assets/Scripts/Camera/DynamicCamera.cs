@@ -31,6 +31,14 @@ public class DynamicCamera : MonoBehaviour
         {
             StartCinematicEnded = true;
         }
+
+        foreach (var player in Players)
+        {
+            if (player.gameObject.GetComponent<InTheScreen>().IsNotDisqualified == false)
+            {
+                Players.Remove(player);
+            }
+        }
         
         if (StartCinematicEnded)
         {
@@ -66,7 +74,5 @@ public class DynamicCamera : MonoBehaviour
         {
             Players.Add(player.transform);
         }
-
-        Debug.Log(Players.Count);
     }
 }
