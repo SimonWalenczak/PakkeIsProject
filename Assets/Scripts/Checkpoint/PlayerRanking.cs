@@ -10,16 +10,23 @@ public class PlayerRanking : MonoBehaviour
     public float distanceToNextCheckpoint;
     public int currentRank;
 
-    private Transform[] Checkpoints;
+    [SerializeField] private List<Transform> Checkpoints;
+
+    public int currentLap = 1;
+    public int totalLaps = 2;
+
+    [SerializeField] private float decelerationRate = 1;
+
     private void Start()
     {
-        Checkpoints = FindCheckpoints();
+        Checkpoints = CheckpointManager.Instance.Checkpoints;
 
-        if (Checkpoints.Length == 0)
+        if (Checkpoints.Count == 0)
         {
             Debug.LogError("No checkpoints found. Make sure they have the correct layer.");
         }
     }
+
     private void Update()
     {
         UpdateCheckpointDistance();
@@ -28,7 +35,7 @@ public class PlayerRanking : MonoBehaviour
 
     void UpdateCheckpointDistance()
     {
-        if (currentCheckpointIndex < Checkpoints.Length)
+        if (currentCheckpointIndex < Checkpoints.Count)
         {
             distanceToNextCheckpoint =
                 Vector3.Distance(transform.position, Checkpoints[currentCheckpointIndex].position);
@@ -36,6 +43,12 @@ public class PlayerRanking : MonoBehaviour
         else
         {
             distanceToNextCheckpoint = 0f;
+
+            if (currentCheckpointIndex == Checkpoints.Count)
+            {
+                // Start a new lap
+                StartNewLap();
+            }
         }
     }
 
@@ -47,15 +60,22 @@ public class PlayerRanking : MonoBehaviour
         {
             if (otherPlayer != this)
             {
-                if (otherPlayer.currentCheckpointIndex > currentCheckpointIndex)
+                if (otherPlayer.currentLap > currentLap)
                 {
                     rank++;
                 }
-                else if (otherPlayer.currentCheckpointIndex == currentCheckpointIndex)
+                else if (otherPlayer.currentLap == currentLap)
                 {
-                    if (otherPlayer.distanceToNextCheckpoint < distanceToNextCheckpoint)
+                    if (otherPlayer.currentCheckpointIndex > currentCheckpointIndex)
                     {
                         rank++;
+                    }
+                    else if (otherPlayer.currentCheckpointIndex == currentCheckpointIndex)
+                    {
+                        if (otherPlayer.distanceToNextCheckpoint < distanceToNextCheckpoint)
+                        {
+                            rank++;
+                        }
                     }
                 }
             }
@@ -66,9 +86,32 @@ public class PlayerRanking : MonoBehaviour
 
     public void PassCheckpoint()
     {
-        currentCheckpointIndex++;
+        if (currentCheckpointIndex == Checkpoints.Count || currentCheckpointIndex == Checkpoints.Count - 1)
+        {
+            currentCheckpointIndex++;
+        }
+        else
+        {
+            Debug.LogWarning("Invalid checkpoint pass. Checkpoint order violation!");
+        }
     }
-    
+
+    void StartNewLap()
+    {
+        if (currentLap < totalLaps)
+        {
+            currentLap++;
+            currentCheckpointIndex = 0;
+        }
+        else
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Vector3 newVelocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
+
+            rb.velocity = newVelocity;
+            print("This player finished this run !");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -81,11 +124,5 @@ public class PlayerRanking : MonoBehaviour
     private static bool Contains(LayerMask mask, int layer)
     {
         return mask == (mask | (1 << layer));
-    }
-
-    Transform[] FindCheckpoints()
-    {
-        return GameObject.FindObjectsOfType<Transform>().Where(obj => obj.gameObject.layer == checkpointLayer)
-            .ToArray();
     }
 }
