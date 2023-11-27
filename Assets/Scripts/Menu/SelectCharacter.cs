@@ -22,8 +22,6 @@ public class SelectCharacter : MonoBehaviour
     [SerializeField] private GameObject _actualMesh;
     [SerializeField] private GameObject _readyPanel;
     [SerializeField] private GameObject _menuPanel;
-    [SerializeField] private Button _readyButton;
-    [SerializeField] private GameObject _readyImage;
 
     private float ignoreInputTime = 0.5f;
 
@@ -71,6 +69,5 @@ public class SelectCharacter : MonoBehaviour
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
         _menuPanel.SetActive(false);
         _readyPanel.SetActive(true);
-        _readyImage.SetActive(true);
     }
 }

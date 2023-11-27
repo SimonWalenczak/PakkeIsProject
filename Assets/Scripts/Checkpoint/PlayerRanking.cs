@@ -1,128 +1,58 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerRanking : MonoBehaviour
 {
-    public int currentCheckpointIndex = 0;
-    public LayerMask checkpointLayer;
-    public float distanceToNextCheckpoint;
-    public int currentRank;
+    public List<Transform> checkpoints;
+    public List<Transform> players;
 
-    [SerializeField] private List<Transform> Checkpoints;
-
-    public int currentLap = 1;
-    public int totalLaps = 2;
-
-    [SerializeField] private float decelerationRate = 1;
+    private Dictionary<Transform, int> checkpointCounts = new Dictionary<Transform, int>();
 
     private void Start()
     {
-        Checkpoints = CheckpointManager.Instance.Checkpoints;
-
-        if (Checkpoints.Count == 0)
+        // Initialize checkpoint counts for each player
+        foreach (Transform player in players)
         {
-            Debug.LogError("No checkpoints found. Make sure they have the correct layer.");
-        }
-    }
-
-    private void Update()
-    {
-        UpdateCheckpointDistance();
-        UpdatePlayerRank();
-    }
-
-    void UpdateCheckpointDistance()
-    {
-        if (currentCheckpointIndex < Checkpoints.Count)
-        {
-            distanceToNextCheckpoint =
-                Vector3.Distance(transform.position, Checkpoints[currentCheckpointIndex].position);
-        }
-        else
-        {
-            distanceToNextCheckpoint = 0f;
-
-            if (currentCheckpointIndex == Checkpoints.Count)
-            {
-                // Start a new lap
-                StartNewLap();
-            }
-        }
-    }
-
-    void UpdatePlayerRank()
-    {
-        int rank = 1;
-
-        foreach (PlayerRanking otherPlayer in FindObjectsOfType<PlayerRanking>())
-        {
-            if (otherPlayer != this)
-            {
-                if (otherPlayer.currentLap > currentLap)
-                {
-                    rank++;
-                }
-                else if (otherPlayer.currentLap == currentLap)
-                {
-                    if (otherPlayer.currentCheckpointIndex > currentCheckpointIndex)
-                    {
-                        rank++;
-                    }
-                    else if (otherPlayer.currentCheckpointIndex == currentCheckpointIndex)
-                    {
-                        if (otherPlayer.distanceToNextCheckpoint < distanceToNextCheckpoint)
-                        {
-                            rank++;
-                        }
-                    }
-                }
-            }
-        }
-
-        currentRank = rank;
-    }
-
-    public void PassCheckpoint()
-    {
-        if (currentCheckpointIndex == Checkpoints.Count || currentCheckpointIndex == Checkpoints.Count - 1)
-        {
-            currentCheckpointIndex++;
-        }
-        else
-        {
-            Debug.LogWarning("Invalid checkpoint pass. Checkpoint order violation!");
-        }
-    }
-
-    void StartNewLap()
-    {
-        if (currentLap < totalLaps)
-        {
-            currentLap++;
-            currentCheckpointIndex = 0;
-        }
-        else
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            Vector3 newVelocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
-
-            rb.velocity = newVelocity;
-            print("This player finished this run !");
+            checkpointCounts[player] = 0;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Contains(checkpointLayer, other.gameObject.layer))
+        if (other.CompareTag("Player") && other.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
         {
-            PassCheckpoint();
+            // Player entered a checkpoint trigger
+            UpdatePlayerRanking(other.transform);
         }
     }
 
-    private static bool Contains(LayerMask mask, int layer)
+    private void UpdatePlayerRanking(Transform player)
     {
-        return mask == (mask | (1 << layer));
+        // Increment checkpoint count for the player
+        checkpointCounts[player]++;
+
+        // Sort players based on checkpoint counts and distances to the next checkpoint
+        players.Sort((p1, p2) =>
+        {
+            int checkpointComparison = checkpointCounts[p2].CompareTo(checkpointCounts[p1]);
+
+            if (checkpointComparison == 0)
+            {
+                // If players have the same number of checkpoints passed, compare distances to the next checkpoint
+                float distanceToNextCheckpointP1 = Vector3.Distance(p1.position, GetNextCheckpoint(p1).position);
+                float distanceToNextCheckpointP2 = Vector3.Distance(p2.position, GetNextCheckpoint(p2).position);
+
+                return distanceToNextCheckpointP1.CompareTo(distanceToNextCheckpointP2);
+            }
+
+            return checkpointComparison;
+        });
+    }
+
+    private Transform GetNextCheckpoint(Transform player)
+    {
+        // Find the next checkpoint based on the player's current checkpoint count
+        int currentCheckpointIndex = Mathf.Clamp(checkpointCounts[player], 0, checkpoints.Count - 1);
+        return checkpoints[currentCheckpointIndex];
     }
 }
