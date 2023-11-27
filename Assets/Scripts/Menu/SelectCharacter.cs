@@ -23,6 +23,7 @@ public class SelectCharacter : MonoBehaviour
     [SerializeField] private GameObject _readyPanel;
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private Button _readyButton;
+    [SerializeField] private GameObject _readyImage;
 
     private float ignoreInputTime = 0.5f;
 
@@ -67,14 +68,9 @@ public class SelectCharacter : MonoBehaviour
     public void SetMesh()
     {
         PlayerConfigurationManager.Instance.SetPlayerMesh(PlayerIndex, _actualMesh);
-        _readyPanel.SetActive(true);
-        _readyButton.Select();
-        _menuPanel.SetActive(false);
-    }
-    
-    public void ReadyPlayer()
-    {
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
-        _readyButton.gameObject.SetActive(false);
+        _menuPanel.SetActive(false);
+        _readyPanel.SetActive(true);
+        _readyImage.SetActive(true);
     }
 }

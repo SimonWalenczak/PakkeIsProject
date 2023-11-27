@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InTheScreen : MonoBehaviour
+public class CameraCheckerPlayer : MonoBehaviour
 {
     public float TimerOutOfView;
     public Camera CameraMain;

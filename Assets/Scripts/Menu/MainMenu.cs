@@ -10,12 +10,12 @@ public class MainMenu : MonoBehaviour
     {
         GameData.NumberOfPlayer = index;
         Debug.Log("Number of players : " + index);
-        StartCoroutine(Transition());
+        StartCoroutine(Transition("PlayerSetup"));
     }
 
     public void GoToCredits()
     {
-        SceneManager.LoadScene("Credits");
+        StartCoroutine(Transition("Credits"));
     }
 
     public void Quit()
@@ -33,10 +33,10 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
-    IEnumerator Transition()
+    IEnumerator Transition(string SceneName)
     {
         TransitionObject.SetActive(true);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("PlayerSetup");
+        SceneManager.LoadScene(SceneName);
     }
 }
