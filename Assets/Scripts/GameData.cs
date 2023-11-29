@@ -5,6 +5,4 @@ using UnityEngine;
 public class GameData
 {
     public static int NumberOfPlayer;
-    
-    // public static PlayerConfiguration 
 }

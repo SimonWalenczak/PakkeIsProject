@@ -20,6 +20,9 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     [SerializeField] private GameObject TransitionObject;
 
+    public List<PlayerRank> AllPlayersAtTheEnd;
+    public List<GameObject> AllMeshPlayersAtTheEnd;
+
     private void Awake()
     {
         if (Instance != null)
@@ -59,9 +62,10 @@ public class PlayerConfigurationManager : MonoBehaviour
         return playerConfigs;
     }
 
-    public void SetPlayerMesh(int index, GameObject mesh)
+    public void SetPlayerMesh(int index, GameObject mesh, int intMesh)
     {
         playerConfigs[index].MeshPlayer = mesh;
+        playerConfigs[index].MeshIndex = intMesh;
         playerConfigs[index].NumPlayer = playerConfigs[index].PlayerIndex;
     }
 
@@ -112,5 +116,6 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public GameObject MeshPlayer { get; set; }
+    public int MeshIndex { get; set; }
     public int NumPlayer { get; set; }
 }

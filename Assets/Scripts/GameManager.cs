@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<PlayerRank> AllPlayers;
+    public List<PlayerRank> FinalClassment;
     
     [Header("Auto Remplissage")]
     public List<PlayerRank> FinishedPlayers;
@@ -44,9 +45,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DetermineMeshClassment()
+    {
+     
+    }
+    
     void LaunchFinalScene()
     {
-        SceneManager.LoadScene("FinalScene");
+        PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(FinishedPlayers);
+        DisqualifiedPlayers.Reverse();
+        PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(DisqualifiedPlayers);
+        
+        DetermineMeshClassment();
+        
+        SceneManager.LoadScene("ScenePodium");
     }
 }
 

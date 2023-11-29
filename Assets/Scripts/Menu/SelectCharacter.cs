@@ -65,7 +65,7 @@ public class SelectCharacter : MonoBehaviour
 
     public void SetMesh()
     {
-        PlayerConfigurationManager.Instance.SetPlayerMesh(PlayerIndex, _actualMesh);
+        PlayerConfigurationManager.Instance.SetPlayerMesh(PlayerIndex, _actualMesh, selectedCharacterIndex);
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
         _menuPanel.SetActive(false);
         _readyPanel.SetActive(true);

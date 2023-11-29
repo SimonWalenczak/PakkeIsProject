@@ -14,7 +14,7 @@ public class PlayerRank : MonoBehaviour
 
     private void Update()
     {
-        distanceToNextCheckpoint = Vector3.Distance(transform.position,
-            CheckpointManager.Instance.Checkpoints[currentCheckpointIndex].transform.position);
+        // distanceToNextCheckpoint = Vector3.Distance(transform.position,
+        //     CheckpointManager.Instance.Checkpoints[currentCheckpointIndex + 1].transform.position);
     }
 }
