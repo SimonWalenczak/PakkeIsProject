@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
     public List<PlayerRank> FinalClassment;
     public GameObject TransitionOutObject;
     [SerializeField] private bool LaunchFInalScene;
+
+    public GameObject cimetery;
     
     [Header("Auto Remplissage")]
     public List<PlayerRank> FinishedPlayers;
@@ -29,6 +33,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        foreach (var player in AllPlayers)
+        {
+            if (player.GetComponent<CameraCheckerPlayer>().IsDisqualified)
+            {
+                player.transform.position = cimetery.transform.position;
+            }
+        }
+        
         AllPlayers.Sort(new PlayerComparer());
         
         if (FinishedPlayers.Count + DisqualifiedPlayers.Count ==
