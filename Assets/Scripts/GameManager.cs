@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<PlayerRank> AllPlayers;
     public List<PlayerRank> FinalClassment;
+    public GameObject TransitionOutObject;
+    [SerializeField] private bool LaunchFInalScene;
     
     [Header("Auto Remplissage")]
     public List<PlayerRank> FinishedPlayers;
     public List<PlayerRank> DisqualifiedPlayers;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -30,8 +32,9 @@ public class GameManager : MonoBehaviour
         AllPlayers.Sort(new PlayerComparer());
         
         if (FinishedPlayers.Count + DisqualifiedPlayers.Count ==
-            PlayerConfigurationManager.Instance.playerConfigs.Count)
+            PlayerConfigurationManager.Instance.playerConfigs.Count && LaunchFInalScene == false)
         {
+            LaunchFInalScene = true;
             StartCoroutine(LaunchFinalScene());
         }
 
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         DisqualifiedPlayers.Reverse();
         PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(DisqualifiedPlayers);
 
+        TransitionOutObject.SetActive(true);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("ScenePodium");
     }
