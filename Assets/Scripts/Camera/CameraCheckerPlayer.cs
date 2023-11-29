@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraCheckerPlayer : MonoBehaviour
 {
@@ -6,18 +7,18 @@ public class CameraCheckerPlayer : MonoBehaviour
     public Camera CameraMain;
     public bool IsInCameraViewValue;
     public float Timer;
-    
+
     private Plane[] _cameraFrustrum;
     private Bounds _bounds;
     private Collider _collider;
 
-    public bool IsNotDisqualified;
-    
+    public bool IsDisqualified;
+
     private void Start()
     {
         CameraMain = Camera.main;
         _collider = GetComponent<Collider>();
-        IsNotDisqualified = true;
+        IsDisqualified = false;
     }
 
     private void Update()
@@ -25,7 +26,7 @@ public class CameraCheckerPlayer : MonoBehaviour
         _bounds = _collider.bounds;
         _cameraFrustrum = GeometryUtility.CalculateFrustumPlanes(CameraMain);
         IsInCameraViewValue = GeometryUtility.TestPlanesAABB(_cameraFrustrum, _bounds);
-        
+
         if (IsInCameraViewValue == false)
         {
             if (Timer < TimerOutOfView)
@@ -45,7 +46,8 @@ public class CameraCheckerPlayer : MonoBehaviour
 
     public void DisqualifiedPlayer()
     {
-        IsNotDisqualified = false;
-        Debug.Log("Player disqualifié !");
+        IsDisqualified = true;
+        if (GameManager.Instance.DisqualifiedPlayers.Contains(GetComponent<PlayerRank>()) == false)
+            GameManager.Instance.DisqualifiedPlayers.Add(GetComponent<PlayerRank>());
     }
 }

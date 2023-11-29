@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
-    public List<Transform> Checkpoints;
+    public List<Checkpoint> Checkpoints;
     public static CheckpointManager Instance;
 
     private void Awake()
@@ -17,6 +15,17 @@ public class CheckpointManager : MonoBehaviour
         else
         {
             Debug.LogError("There is already another CheckpointManager in this scene !");
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = 1; i < Checkpoints.Count; i++)
+        {
+            if (Checkpoints[i - 1].IsPassed)
+            {
+                Checkpoints[i].CanBePassed = true;
+            }
         }
     }
 }

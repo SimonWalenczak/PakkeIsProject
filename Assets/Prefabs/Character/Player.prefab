@@ -5188,6 +5188,7 @@ GameObject:
   - component: {fileID: 4980574356805497315}
   - component: {fileID: 5686339391866686918}
   - component: {fileID: 2411414571749829286}
+  - component: {fileID: 7389377143997686566}
   m_Layer: 10
   m_Name: Kayak
   m_TagString: Test
@@ -5372,6 +5373,20 @@ MonoBehaviour:
   IsInCameraViewValue: 0
   Timer: 0
   IsNotDisqualified: 0
+--- !u!114 &7389377143997686566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778740324263389983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd2f3ac6b492224a933489d50ecf32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentNbLap: 2
+  currentCheckpointIndex: 1
 --- !u!1 &1806307513495620206
 GameObject:
   m_ObjectHideFlags: 0

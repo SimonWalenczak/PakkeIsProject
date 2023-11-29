@@ -34,7 +34,7 @@ public class DynamicCamera : MonoBehaviour
 
         foreach (var player in Players)
         {
-            if (player.gameObject.GetComponent<CameraCheckerPlayer>().IsNotDisqualified == false)
+            if (player.gameObject.GetComponent<CameraCheckerPlayer>().IsDisqualified == true)
             {
                 Players.Remove(player);
             }
