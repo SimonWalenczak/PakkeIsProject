@@ -22,7 +22,7 @@ public class Checkpoint : MonoBehaviour
                     Debug.Log("Lap finished !");
                     if (player.currentNbLap == 1)
                     {
-                        player.currentCheckpointIndex = 1;
+                        player.currentCheckpointIndex = 2;
                         player.currentNbLap = 2;
                     }
                     else if (player.currentNbLap == 2)

@@ -36,7 +36,7 @@ public class Stalagmite : MonoBehaviour
     {
         //Player can't move
         print("freeze position");
-        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition + (int)RigidbodyConstraints.FreezeRotationX + (int)RigidbodyConstraints.FreezeRotationZ;
 
         //play animation with Dotween
         other.transform.DOMove(other.transform.position + other.transform.forward * offsetThrowing, duration)
@@ -48,9 +48,9 @@ public class Stalagmite : MonoBehaviour
 
         //Player can move
         print("unfreeze position");
-        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX;
-        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
+        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY +
+                                                                  (int)RigidbodyConstraints.FreezeRotationZ +
+                                                                  (int)RigidbodyConstraints.FreezeRotationX;
 
         //Time before next Banana
         yield return new WaitForSeconds(TimeBeforeBeingVulnerable);
