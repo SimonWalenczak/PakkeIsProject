@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
         if (FinishedPlayers.Count + DisqualifiedPlayers.Count ==
             PlayerConfigurationManager.Instance.playerConfigs.Count)
         {
-            LaunchFinalScene();
+            StartCoroutine(LaunchFinalScene());
         }
 
         if (Input.GetKeyDown(KeyCode.H))
@@ -45,19 +46,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DetermineMeshClassment()
-    {
-     
-    }
-    
-    void LaunchFinalScene()
+    IEnumerator LaunchFinalScene()
     {
         PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(FinishedPlayers);
         DisqualifiedPlayers.Reverse();
         PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(DisqualifiedPlayers);
-        
-        DetermineMeshClassment();
-        
+
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("ScenePodium");
     }
 }
