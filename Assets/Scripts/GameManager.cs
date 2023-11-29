@@ -45,19 +45,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DetermineMeshClassment()
-    {
-     
-    }
-    
     void LaunchFinalScene()
     {
         PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(FinishedPlayers);
         DisqualifiedPlayers.Reverse();
         PlayerConfigurationManager.Instance.AllPlayersAtTheEnd.AddRange(DisqualifiedPlayers);
-        
-        DetermineMeshClassment();
-        
+
         SceneManager.LoadScene("ScenePodium");
     }
 }

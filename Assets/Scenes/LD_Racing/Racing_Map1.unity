@@ -2005,53 +2005,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 88272831}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &90930428
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 90930430}
-  - component: {fileID: 90930429}
-  m_Layer: 0
-  m_Name: PlayerRanking
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &90930429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90930428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3355b65c50172448a4d5b69cfafe349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkpoints:
-  - {fileID: 131630837}
-  players: []
---- !u!4 &90930430
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90930428}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 123.45906, y: 29.772821, z: 327.34143}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &91363893
 GameObject:
   m_ObjectHideFlags: 0
@@ -12420,6 +12373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fbb0ca6aea9c343bcfe2a4881a4aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllPlayers: []
+  FinalClassment: []
   FinishedPlayers: []
   DisqualifiedPlayers: []
 --- !u!4 &482396206 stripped
@@ -52689,6 +52644,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1885966145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887295831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1887295832}
+  m_Layer: 0
+  m_Name: DisqualifiedPlayerCimetery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1887295832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887295831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -77, y: -24.821686, z: 756}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1887604680
 PrefabInstance:
   m_ObjectHideFlags: 0
