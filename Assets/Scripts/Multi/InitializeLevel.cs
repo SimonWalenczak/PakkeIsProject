@@ -21,6 +21,8 @@ public class InitializeLevel : MonoBehaviour
             Transform placeForCharacterPlayer = player.GetComponentInChildren<CharacterPlayerPivot>().transform;
 
             GameObject characterPlayer = Instantiate(playerConfigs[i].MeshPlayer, placeForCharacterPlayer.position, placeForCharacterPlayer.rotation, placeForCharacterPlayer.transform);
+            
+            player.GetComponentInChildren<PlayerRank>().numPlayer = playerConfigs[i].NumPlayer;
         }
     }
 }

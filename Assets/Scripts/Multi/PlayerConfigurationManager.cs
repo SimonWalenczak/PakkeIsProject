@@ -62,6 +62,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void SetPlayerMesh(int index, GameObject mesh)
     {
         playerConfigs[index].MeshPlayer = mesh;
+        playerConfigs[index].NumPlayer = playerConfigs[index].PlayerIndex;
     }
 
     public void ReadyPlayer(int index)
@@ -111,4 +112,5 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public GameObject MeshPlayer { get; set; }
+    public int NumPlayer { get; set; }
 }
